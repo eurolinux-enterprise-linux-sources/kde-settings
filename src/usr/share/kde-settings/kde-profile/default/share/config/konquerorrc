@@ -1,0 +1,25 @@
+[Java/JavaScript Settings]
+EnableJavaScript=true
+EnableJSDebugOutput=false
+EnablePlugins=true
+
+[HTML Settings]
+AutoDelayedActions=true
+AutoLoadImages=true
+ChangeCursor=true
+FormCompletion=true
+HoverLinks=true
+MaxFormCompletionItems=10
+ShowAnimations=Enabled
+UnderlineLinks=true
+MediumFontSize=10
+MinimumFontSize=8
+
+[FMSettings]
+DisplayFileSizeInBytes=false
+ShowFileTips=false
+UnderlineLinks=false
+WordWrapText=true
+
+[UserSettings]
+HomeURL=file:///usr/share/doc/HTML/index.html

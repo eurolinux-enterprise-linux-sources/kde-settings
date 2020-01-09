@@ -1,0 +1,21 @@
+[Development]
+AutoCheckAccelerators=false
+
+[General]
+widgetStyle=oxygen
+XftAntialias=true
+
+[Icons]
+Theme=Fedora-KDE
+
+[Paths]
+Desktop[$e]=$(xdg-user-dir DESKTOP)
+Documents[$e]=$(xdg-user-dir DOCUMENTS)
+#Trash[$e]=$(xdg-user-dir DESKTOP)/Trash/
+
+[Toolbar style]
+Highlighting=true
+IconText=IconOnly
+TransparentMoving=true
+
+[KDE Action Restrictions][$i]
