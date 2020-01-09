@@ -1,7 +1,7 @@
 Summary: Config files for kde
 Name: kde-settings
 Version: 4.3.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 Group: System Environment/Base
 License: Public Domain
@@ -9,6 +9,7 @@ Url: http://fedorahosted.org/kde-settings
 Source0: https://fedorahosted.org/releases/k/d/kde-settings/%{name}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
+Patch1: kde-settings-4.3.1-disable-java.patch
 
 BuildRequires: kde-filesystem
 
@@ -54,6 +55,7 @@ Requires: alsa-plugins-pulseaudio
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch1 -p1
 
 %build
 # Intentionally left blank.  Nothing to see here.
@@ -118,6 +120,9 @@ touch --no-create %{_datadir}/kde-settings/kde-profile/default/share/icons/Fedor
 
 
 %changelog
+* Mon Jun 17 2013 Than Ngo <than@redhat.com> - 4.3.1-2
+- Resolves: bz#886237, disable Java by default
+
 * Thu Apr 22 2010 Than Ngo <than@redhat.com> 4.3.1-1
 - set colortheme=oxygen in kdm theme
 - cleanup
