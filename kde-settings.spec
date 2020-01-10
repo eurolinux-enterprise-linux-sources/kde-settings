@@ -1,5 +1,5 @@
 %global rel 23
-%global subrel 5
+%global subrel 7
 
 Summary: Config files for kde
 Name:    kde-settings
@@ -10,8 +10,10 @@ License: MIT
 Url:     http://fedorahosted.org/kde-settings
 Source0: https://fedorahosted.org/releases/k/d/kde-settings/%{name}-%{version}-%{rel}.tar.xz
 Source1: COPYING
-Patch0: kde-settings-19-23-rhel.patch
-Patch1: kde-settings-19-23-bz#1124472.patch
+Patch0:  kde-settings-19-23-rhel.patch
+Patch1:  kde-settings-19-23-bz#1124472.patch
+Patch2:  kde-settings-19-23-bz#1404382.patch
+
 BuildArch: noarch
 
 BuildRequires: kde-filesystem
@@ -54,14 +56,14 @@ Requires(post): kde4-macros(api) = %{_kde4_macros_api}
 Summary: Configuration files for ksplash
 Requires: %{name} = %{version}-%{release}
 Requires: redhat-logos >= 69.0.0
-%description ksplash 
+%description ksplash
 %{summary}.
 
 %package plasma
-Summary: Configuration files for plasma 
+Summary: Configuration files for plasma
 Requires: %{name} = %{version}-%{release}
 Requires: redhat-logos >= 69.0.0
-%description plasma 
+%description plasma
 %{summary}.
 
 %package pulseaudio
@@ -78,7 +80,7 @@ Requires: alsa-plugins-pulseaudio
 %{summary}.
 
 %package -n qt-settings
-Summary: Configuration files for Qt 
+Summary: Configuration files for Qt
 # qt-graphicssystem.* scripts use lspci
 Requires: pciutils
 %description -n qt-settings
@@ -89,6 +91,7 @@ Requires: pciutils
 %setup -q -n %{name}-%{version}-%{rel}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 # Intentionally left blank.  Nothing to see here.
@@ -125,7 +128,7 @@ rm -rf %{buildroot}%{_sysconfdir}/kde/kdm \
 # fix permission
 chmod 644  %{buildroot}%{_sysconfdir}/profile.d/kde.*
 
-%files 
+%files
 %doc COPYING
 %config(noreplace) %{_sysconfdir}/profile.d/kde.*
 %{_datadir}/kde-settings/
@@ -198,11 +201,19 @@ chmod 644  %{buildroot}%{_sysconfdir}/profile.d/kde.*
 
 
 %changelog
+* Tue Sep 12 2017 Jan Grulich <jgrulich@redhat.com> - 19-23.7
+- Fix the way we patch kde-settings
+  Resolves: bz#1404382
+
+* Tue Sep 12 2017 Jan Grulich <jgrulich@redhat.com> - 19-23.6
+- Create ~/.local/share folder by default if doesn't exist
+  Resolves: bz#1404382
+
 * Fri Nov 14 2014 Than Ngo <than@redhat.com> - 19-23.5
 - Resolves: bz#1124472,  shell namespace pollution
 
 * Thu Feb 27 2014 Than Ngo <than@redhat.com> - 19-23.4
-- exclude kdm 
+- exclude kdm
 
 * Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 19-23.3
 - Mass rebuild 2013-12-27
@@ -215,13 +226,13 @@ chmod 644  %{buildroot}%{_sysconfdir}/profile.d/kde.*
 
 * Mon Jul 29 2013 Than Ngo <than@redhat.com> - 19-23.1
 - fixed a typo in systemd_preun (#989145)
-- rhel cleanup 
+- rhel cleanup
 
 * Fri May 31 2013 Martin Briza <mbriza@redhat.com> - 19-23
 - remove Console login menu option from KDM (#966095)
 
 * Wed May 22 2013 Than Ngo <than@redhat.com> - 19-22
-- disable java by default 
+- disable java by default
 
 * Tue May 21 2013 Rex Dieter <rdieter@fedoraproject.org> 19-21
 - cleanup systemd macros
@@ -393,7 +404,7 @@ chmod 644  %{buildroot}%{_sysconfdir}/profile.d/kde.*
 - -kdm: Requires: system-kdm-theme >= 15.90
 
 * Mon Oct 31 2011 Rex Dieter <rdieter@fedoraproject.org> 4.7-13.1
-- -kdm: Requires: verne-kdm-theme (#651305) 
+- -kdm: Requires: verne-kdm-theme (#651305)
 
 * Fri Oct 21 2011 Rex Dieter <rdieter@fedoraproject.org> 4.7-13
 - s/kpackagekit/apper/ configs
@@ -474,8 +485,8 @@ chmod 644  %{buildroot}%{_sysconfdir}/profile.d/kde.*
 - drop old Conflicts
 - Xserver-1.10: Fatal server error: Unrecognized option: -nr (#659684)
 
-* Mon Nov 29 2010 Rex Dieter <rdieter@fedoraproject.org> 4.6-1 
-- init 4.6 
+* Mon Nov 29 2010 Rex Dieter <rdieter@fedoraproject.org> 4.6-1
+- init 4.6
 - /var/run/kdm/ fails to be created on boot (#657785)
 
 * Thu Nov 11 2010 Rex Dieter <rdieter@fedoraproject.org> 4.5-11
