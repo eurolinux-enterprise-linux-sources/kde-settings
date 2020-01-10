@@ -1,5 +1,5 @@
 %global rel 23
-%global subrel 8
+%global subrel 9
 
 Summary: Config files for kde
 Name:    kde-settings
@@ -201,6 +201,10 @@ chmod 644  %{buildroot}%{_sysconfdir}/profile.d/kde.*
 
 
 %changelog
+* Mon Mar 18 2019 Jan Grulich <jgrulich@redhat.com> - 19-23.9
+- Check if we have write access to home directory before creating default folders
+  Resolves: bz#1579764
+
 * Fri May 25 2018 Jan Grulich <jgrulich@redhat.com> - 19-23.8
 - Fix upstream URL
   Resolves: bz#1501830
