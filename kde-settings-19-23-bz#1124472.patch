@@ -1,0 +1,16 @@
+diff -up kde-settings-19-23/etc/profile.d/kde.csh.orig kde-settings-19-23/etc/profile.d/kde.csh
+--- kde-settings-19-23/etc/profile.d/kde.csh.orig	2012-05-16 18:30:07.000000000 +0200
++++ kde-settings-19-23/etc/profile.d/kde.csh	2014-11-14 13:50:28.010509907 +0100
+@@ -21,3 +21,4 @@ endif
+ #endif
+ end
+ 
++unsetenv libdir
+diff -up kde-settings-19-23/etc/profile.d/kde.sh.orig kde-settings-19-23/etc/profile.d/kde.sh
+--- kde-settings-19-23/etc/profile.d/kde.sh.orig	2012-05-16 18:30:07.000000000 +0200
++++ kde-settings-19-23/etc/profile.d/kde.sh	2014-11-14 13:50:35.823455602 +0100
+@@ -21,3 +21,4 @@ fi
+ #fi
+ done
+ 
++unset libdir
