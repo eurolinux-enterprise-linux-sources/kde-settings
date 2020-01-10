@@ -1,5 +1,5 @@
 %global rel 23
-%global subrel 7
+%global subrel 10
 
 Summary: Config files for kde
 Name:    kde-settings
@@ -7,7 +7,7 @@ Version: 19
 Release: %{rel}.%{subrel}%{?dist}
 
 License: MIT
-Url:     http://fedorahosted.org/kde-settings
+Url:     https://github.com/FedoraKDE/kde-settings
 Source0: https://fedorahosted.org/releases/k/d/kde-settings/%{name}-%{version}-%{rel}.tar.xz
 Source1: COPYING
 Patch0:  kde-settings-19-23-rhel.patch
@@ -201,6 +201,18 @@ chmod 644  %{buildroot}%{_sysconfdir}/profile.d/kde.*
 
 
 %changelog
+* Thu Aug 08 2019 Jan Grulich <jgrulich@redhat.com> - 19-23.10
+- Use correct tcsh syntax for config scripts
+  Resolves: bz#1738491
+
+* Mon Mar 18 2019 Jan Grulich <jgrulich@redhat.com> - 19-23.9
+- Check if we have write access to home directory before creating default folders
+  Resolves: bz#1579764
+
+* Fri May 25 2018 Jan Grulich <jgrulich@redhat.com> - 19-23.8
+- Fix upstream URL
+  Resolves: bz#1501830
+
 * Tue Sep 12 2017 Jan Grulich <jgrulich@redhat.com> - 19-23.7
 - Fix the way we patch kde-settings
   Resolves: bz#1404382

@@ -1,27 +1,27 @@
 diff --git a/etc/profile.d/kde.csh b/etc/profile.d/kde.csh
-index f690ca9..ca3eb8b 100755
+index f690ca9..7bf762f 100755
 --- a/etc/profile.d/kde.csh
 +++ b/etc/profile.d/kde.csh
 @@ -21,4 +21,9 @@ endif
  #endif
  end
- 
+
 +# Fix the user-places.xbel error pop at first user login
-+if ( ! -d ${HOME}/.local/share ) then
-+    mkdir -p ${HOME}/.local/share
++if ( ! -d "${HOME}/.local/share" && -w "${HOME}" ) then
++  mkdir -p "${HOME}/.local/share"
 +endif
 +
  unsetenv libdir
 diff --git a/etc/profile.d/kde.sh b/etc/profile.d/kde.sh
-index 679410f..797101a 100755
+index 679410f..df16705 100755
 --- a/etc/profile.d/kde.sh
 +++ b/etc/profile.d/kde.sh
 @@ -21,4 +21,9 @@ fi
  #fi
  done
- 
+
 +# Fix the user-places.xbel error pop at first user login
-+if [ ! -d $HOME/.local/share ]; then
++if [ ! -d $HOME/.local/share -a -w ${HOME} ]; then
 +    mkdir -p $HOME/.local/share
 +fi
 +
